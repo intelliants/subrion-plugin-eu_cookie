@@ -4,15 +4,11 @@
 	<summary>Plugin shows banner with information that this website is using cookies.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>1.0.1</version>
-	<date>2015-12-15</date>
+	<version>1.1.0</version>
+	<date>2016-02-24</date>
 	<compatibility>4.0</compatibility>
 
 	<configgroup name="eu_cookie">EU Cookie Policy</configgroup>
-	<config group="eu_cookie" type="divider" name="eu_cookie_plugin">Configuration</config>
-	<config group="eu_cookie" type="text" name="eu_cookie_text" description="Text">This website uses cookies.</config>
-	<config group="eu_cookie" type="text" name="eu_cookie_policylinktext" description="Policy Link text">More info</config>
-	<config group="eu_cookie" type="text" name="eu_cookie_btntext" description="Button text">I understand</config>
 	<config group="eu_cookie" type="divider" name="eu_cookie_plugin2">Styles</config>
 	<config group="eu_cookie" type="select" name="eu_cookie_position" multiplevalues="top,bottom" description="Position">bottom</config>
 	<config group="eu_cookie" type="select" name="eu_cookie_theme" multiplevalues="dark,light" description="Theme">dark</config>
@@ -23,6 +19,12 @@
 	<config group="eu_cookie" type="text" name="eu_cookie_closeeffectduration" description="Close effect duration (ms)">600</config>
 	<config group="eu_cookie" type="select" name="eu_cookie_closeeffecteasing" multiplevalues="swing,linear" description="Close effect easing">swing</config>
 
+	<phrases>
+		<phrase category="frontend" key="eu_cookie_text">This website uses cookies.</phrase>
+		<phrase category="frontend" key="eu_cookie_policylinktext">More info</phrase>
+		<phrase category="frontend" key="eu_cookie_btntext">I understand</phrase>
+	</phrases>
+
 	<hooks>
 		<hook name="smartyFrontAfterHeadSection" type="smarty">
 			<![CDATA[
@@ -32,10 +34,10 @@
 $(function()
 {
 	$.DivasCookies({
-		bannerText: '{$core.config.eu_cookie_text}',
-		acceptButtonText: '{$core.config.eu_cookie_btntext}',
+		bannerText: _t('eu_cookie_text'),
+		acceptButtonText: _t('eu_cookie_btntext'),
 		cookiePolicyLink: '{$smarty.const.IA_URL}policy/',
-		cookiePolicyLinkText: '{$core.config.eu_cookie_policylinktext}',
+		cookiePolicyLinkText: _t('eu_cookie_policylinktext'),
 		openEffect: '{$core.config.eu_cookie_openeffect}',
 		openEffectDuration: {$core.config.eu_cookie_openeffectduration},
 		openEffectEasing: '{$core.config.eu_cookie_openeffecteasing}',
@@ -48,4 +50,15 @@ $(function()
 			]]>
 		</hook>
 	</hooks>
+
+	<upgrade>
+		<code version="1.1.0"><![CDATA[
+foreach (array('eu_cookie_text', 'eu_cookie_btntext', 'eu_cookie_policylinktext') as $value)
+{
+	iaLanguage::addPhrase($value, $iaCore->get($value), '', 'eu_cookie', iaLanguage::CATEGORY_FRONTEND, true);
+	$iaDb->delete(iaDb::convertIds($value, 'name'), iaCore::getConfigTable());
+}
+$iaDb->delete(iaDb::convertIds('eu_cookie_plugin', 'name'), iaCore::getConfigTable());
+		]]></code>
+	</upgrade>
 </plugin>
