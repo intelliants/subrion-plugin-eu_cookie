@@ -10,14 +10,14 @@
 
 	<configgroup name="eu_cookie">EU Cookie Policy</configgroup>
 	<config group="eu_cookie" type="divider" name="eu_cookie_plugin2">Styles</config>
-	<config group="eu_cookie" type="select" name="eu_cookie_position" multiplevalues="top,bottom" description="Position">bottom</config>
-	<config group="eu_cookie" type="select" name="eu_cookie_theme" multiplevalues="dark,light" description="Theme">dark</config>
-	<config group="eu_cookie" type="select" name="eu_cookie_openeffect" multiplevalues="fade,slideUp,slideDown,slideLeft,slideRight" description="Open effect">slideUp</config>
+	<config group="eu_cookie" type="select" name="eu_cookie_position" values="top,bottom" description="Position">bottom</config>
+	<config group="eu_cookie" type="select" name="eu_cookie_theme" values="dark,light" description="Theme">dark</config>
+	<config group="eu_cookie" type="select" name="eu_cookie_openeffect" values="fade,slideUp,slideDown,slideLeft,slideRight" description="Open effect">slideUp</config>
 	<config group="eu_cookie" type="text" name="eu_cookie_openeffectduration" description="Open effect duration (ms)">600</config>
-	<config group="eu_cookie" type="select" name="eu_cookie_openeffecteasing" multiplevalues="swing,linear" description="Open effect easing">swing</config>
-	<config group="eu_cookie" type="select" name="eu_cookie_closeeffect" multiplevalues="fade,slideUp,slideDown,slideLeft,slideRight" description="Close effect">slideDown</config>
+	<config group="eu_cookie" type="select" name="eu_cookie_openeffecteasing" values="swing,linear" description="Open effect easing">swing</config>
+	<config group="eu_cookie" type="select" name="eu_cookie_closeeffect" values="fade,slideUp,slideDown,slideLeft,slideRight" description="Close effect">slideDown</config>
 	<config group="eu_cookie" type="text" name="eu_cookie_closeeffectduration" description="Close effect duration (ms)">600</config>
-	<config group="eu_cookie" type="select" name="eu_cookie_closeeffecteasing" multiplevalues="swing,linear" description="Close effect easing">swing</config>
+	<config group="eu_cookie" type="select" name="eu_cookie_closeeffecteasing" values="swing,linear" description="Close effect easing">swing</config>
 
 	<phrases>
 		<phrase category="frontend" key="eu_cookie_text">This website uses cookies.</phrase>
