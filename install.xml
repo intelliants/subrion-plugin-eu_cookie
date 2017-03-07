@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<plugin name="eu_cookie">
+<module type="plugin" name="eu_cookie">
 	<title>EU Cookie Policy banner</title>
 	<summary>Plugin shows banner with information that this website is using cookies.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>1.1.0</version>
-	<date>2016-02-24</date>
-	<compatibility>4.0</compatibility>
+	<version>1.2.0</version>
+	<date>2017-03-07</date>
+	<compatibility>4.1</compatibility>
 
 	<configgroup name="eu_cookie">EU Cookie Policy</configgroup>
 	<config group="eu_cookie" type="divider" name="eu_cookie_plugin2">Styles</config>
@@ -28,8 +28,8 @@
 	<hooks>
 		<hook name="smartyFrontAfterHeadSection" type="smarty">
 			<![CDATA[
-{ia_print_css files="_IA_URL_plugins/eu_cookie/templates/front/css/divascookies, _IA_URL_plugins/eu_cookie/templates/front/css/divascookies_style_{$core.config.eu_cookie_theme}_{$core.config.eu_cookie_position}"}
-{ia_print_js files="_IA_URL_plugins/eu_cookie/js/frontend/jquery.divascookies-0.3.min"}
+{ia_print_css files="_IA_URL_modules/eu_cookie/templates/front/css/divascookies, _IA_URL_modules/eu_cookie/templates/front/css/divascookies_style_{$core.config.eu_cookie_theme}_{$core.config.eu_cookie_position}"}
+{ia_print_js files="_IA_URL_modules/eu_cookie/js/frontend/jquery.divascookies-0.3.min"}
 {ia_add_js}
 $(function()
 {
@@ -50,15 +50,4 @@ $(function()
 			]]>
 		</hook>
 	</hooks>
-
-	<upgrade>
-		<code version="1.1.0"><![CDATA[
-foreach (array('eu_cookie_text', 'eu_cookie_btntext', 'eu_cookie_policylinktext') as $value)
-{
-	iaLanguage::addPhrase($value, $iaCore->get($value), '', 'eu_cookie', iaLanguage::CATEGORY_FRONTEND, true);
-	$iaDb->delete(iaDb::convertIds($value, 'name'), iaCore::getConfigTable());
-}
-$iaDb->delete(iaDb::convertIds('eu_cookie_plugin', 'name'), iaCore::getConfigTable());
-		]]></code>
-	</upgrade>
-</plugin>
+</module>
