@@ -6,16 +6,16 @@
  */
 
 .divascookies {
-	top: 0;
-	background: #313131;
-	color: #f9fafc;
+    top: 0;
+    background: #313131;
+    color: #f9fafc;
 }
 
 .divascookies-accept-button-container > .divascookies-accept-button-text {
-	background: #f9fafc;
-	color: #313131;
+    background: #f9fafc;
+    color: #313131;
 }
 
 .divascookies-accept-button-container > .divascookies-accept-button-text:hover {
-	background: #e3e4e6;
+    background: #e3e4e6;
 }
